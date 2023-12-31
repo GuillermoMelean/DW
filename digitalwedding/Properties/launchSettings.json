@@ -3,15 +3,15 @@
     "windowsAuthentication": false,
     "anonymousAuthentication": true,
     "iisExpress": {
-      "applicationUrl": "http://localhost:24311",
-      "sslPort": 44362
+      "applicationUrl": "http://localhost:53581",
+      "sslPort": 44345
     }
   },
   "profiles": {
-    "digital_wedding": {
+    "digitalwedding": {
       "commandName": "Project",
       "launchBrowser": true,
-      "applicationUrl": "https://localhost:7296;http://localhost:5175",
+      "applicationUrl": "https://localhost:7238;http://localhost:5111",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development",
         "ASPNETCORE_HOSTINGSTARTUPASSEMBLIES": "Microsoft.AspNetCore.SpaProxy"

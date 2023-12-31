@@ -1,4 +1,4 @@
-﻿namespace digital_wedding;
+﻿namespace digitalwedding;
 
 public class WeatherForecast
 {

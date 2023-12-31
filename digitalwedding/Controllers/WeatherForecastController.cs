@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 
-namespace digital_wedding.Controllers;
+namespace digitalwedding.Controllers;
 
 [ApiController]
 [Route("[controller]")]
