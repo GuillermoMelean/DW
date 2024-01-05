@@ -6,4 +6,8 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Contracts\digitalwedding.Contracts.csproj" />
+    <ProjectReference Include="..\digitalwedding.Application\digitalwedding.Application.csproj" />
+  </ItemGroup>
 </Project>

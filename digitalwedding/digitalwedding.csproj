@@ -29,7 +29,13 @@
     <Folder Include="Controllers\api\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Contracts\Contracts.csproj">
+    <ProjectReference Include="..\digitalwedding.Application\digitalwedding.Application.csproj">
+      <GlobalPropertiesToRemove></GlobalPropertiesToRemove>
+    </ProjectReference>
+    <ProjectReference Include="..\digitalwedding.Infrastructure\digitalwedding.Infrastructure.csproj">
+      <GlobalPropertiesToRemove></GlobalPropertiesToRemove>
+    </ProjectReference>
+    <ProjectReference Include="..\Contracts\digitalwedding.Contracts.csproj">
       <GlobalPropertiesToRemove></GlobalPropertiesToRemove>
     </ProjectReference>
   </ItemGroup>

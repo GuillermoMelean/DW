@@ -5,7 +5,11 @@ VisualStudioVersion = 25.0.1706.7
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "digitalwedding", "digitalwedding\digitalwedding.csproj", "{6A7BD7DF-D8D5-4D40-AA6B-A418F0F79E0F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Contracts", "Contracts\Contracts.csproj", "{302E386C-77E6-4B33-ABF1-FAF902D1B825}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "digitalwedding.Contracts", "Contracts\digitalwedding.Contracts.csproj", "{302E386C-77E6-4B33-ABF1-FAF902D1B825}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "digitalwedding.Application", "digitalwedding.Application\digitalwedding.Application.csproj", "{0016E272-E73E-4D00-9DCF-E07025E5D2C4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "digitalwedding.Infrastructure", "digitalwedding.Infrastructure\digitalwedding.Infrastructure.csproj", "{FB302CAB-07FA-4E56-9793-E35638ADD27B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +25,14 @@ Global
 		{302E386C-77E6-4B33-ABF1-FAF902D1B825}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{302E386C-77E6-4B33-ABF1-FAF902D1B825}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{302E386C-77E6-4B33-ABF1-FAF902D1B825}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0016E272-E73E-4D00-9DCF-E07025E5D2C4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0016E272-E73E-4D00-9DCF-E07025E5D2C4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0016E272-E73E-4D00-9DCF-E07025E5D2C4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0016E272-E73E-4D00-9DCF-E07025E5D2C4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FB302CAB-07FA-4E56-9793-E35638ADD27B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FB302CAB-07FA-4E56-9793-E35638ADD27B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FB302CAB-07FA-4E56-9793-E35638ADD27B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FB302CAB-07FA-4E56-9793-E35638ADD27B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

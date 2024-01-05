@@ -1,0 +1,34 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net7.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Contracts\digitalwedding.Contracts.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="Services\" />
+    <None Remove="Data\" />
+    <None Remove="Data\Interfaces\" />
+    <None Remove="Data\Models\" />
+    <None Remove="Data\Models\Gateway\" />
+    <None Remove="Data\Models\Repositories\" />
+    <None Remove="Data\Models\Gateway\Guests\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Services\" />
+    <Folder Include="Data\" />
+    <Folder Include="Data\Interfaces\" />
+    <Folder Include="Data\Models\" />
+    <Folder Include="Data\Models\Gateway\" />
+    <Folder Include="Data\Models\Repositories\" />
+    <Folder Include="Data\Models\Gateway\Guests\" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="8.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="8.0.0" />
+  </ItemGroup>
+</Project>

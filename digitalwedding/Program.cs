@@ -1,8 +1,11 @@
-﻿var builder = WebApplication.CreateBuilder(args);
+﻿using digitalwedding.Application.Services;
+
+var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
 builder.Services.AddControllersWithViews();
+builder.Services.AddScoped<IGuestService, GuestService>();
 
 var app = builder.Build();
 
