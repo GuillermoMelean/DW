@@ -1,11 +1,16 @@
-﻿using digitalwedding.Application.Services;
+﻿using digitalwedding.Application;
+using digitalwedding.Application.Data.Interfaces;
+using digitalwedding.Application.Services;
+using digitalwedding.Infrastructure;
+using digitalwedding.Infrastructure.Data.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
 builder.Services.AddControllersWithViews();
-builder.Services.AddScoped<IGuestService, GuestService>();
+builder.Services.AddInfrastructure();
+builder.Services.AddServices();
 
 var app = builder.Build();
 
