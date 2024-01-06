@@ -6,6 +6,7 @@ namespace digitalwedding.Infrastructure.Data.Repositories
 	public class AppDbContext: DbContext
 	{
 		public DbSet<Wedding> Weddings { get; set; }
+		public DbSet<Guest> Guests { get; set; }
 
 		protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 		{
@@ -13,14 +14,12 @@ namespace digitalwedding.Infrastructure.Data.Repositories
 
 			var serverVersion = new MySqlServerVersion(new Version(10, 3, 39));
 			optionsBuilder.UseMySql(connectionString, serverVersion);
-
 		}
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
-			builder.Entity<Wedding>().HasIndex(s => s.Id);
-			builder.Entity<Guest>().HasIndex(s => s.Id);
+			builder.Entity<Wedding>();
+			builder.Entity<Guest>();
         }
     }
 }
-

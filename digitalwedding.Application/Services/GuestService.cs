@@ -24,7 +24,7 @@ namespace digitalwedding.Application.Services
 
         public async Task<Result<CreateGuestResponse>> CreateGuest(CreateGuestRequest createGuestRequest)
         {
-            var ola = _guestRepository.GetAll().ToList();
+            var ola = _guestRepository.GetAll();
             return Result.Ok(new CreateGuestResponse() { result = createGuestRequest.WeddingId });
         }
     }

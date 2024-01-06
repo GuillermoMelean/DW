@@ -1,14 +1,12 @@
-﻿using System;
-using digitalwedding.Application.Data.Models.Gateway.Guests;
+﻿using digitalwedding.Application.Data.Models.Gateway.Guests;
 using digitalwedding.Application.Services;
 using digitalwedding.Contracts.GuestContracts;
 using Microsoft.AspNetCore.Mvc;
-using Results;
 
 namespace digitalwedding.Controllers.api
 {
     [ApiController]
-    [Route("/api/guest/")]
+    [Route("/api/guests/")]
     public class GuestController : ControllerBase
     {
         private readonly IGuestService _guestService;
@@ -18,11 +16,10 @@ namespace digitalwedding.Controllers.api
             _guestService = guestService;
         }
 
-
         [HttpPost()]
         public async Task<IActionResult> CreateGuest([FromBody] CreateGuestContractRequest contract)
         {
-            Result response = await _guestService.CreateGuest(new CreateGuestRequest()
+            await _guestService.CreateGuest(new CreateGuestRequest()
             {
                WeddingId = contract.wedding_id,
                FirstName = contract.first_name,
@@ -38,7 +35,7 @@ namespace digitalwedding.Controllers.api
                Attendance = contract.attendance,
                Message = contract.message
             });
-            return Ok(response);
+            return NoContent();
         }
     }
 }

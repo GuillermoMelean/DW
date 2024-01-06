@@ -9,6 +9,7 @@ namespace digitalwedding.Application
 		public static IServiceCollection AddServices(this IServiceCollection services)
 		{
 			services.AddScoped<IGuestService, GuestService>();
+			services.AddScoped<IWeddingService, WeddingService>();
 
 			return services;
 		}
