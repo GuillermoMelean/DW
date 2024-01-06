@@ -3,12 +3,12 @@ using digitalwedding.Application.Data.Models.Gateway.Guests;
 using digitalwedding.Application.Services;
 using digitalwedding.Contracts.GuestContracts;
 using Microsoft.AspNetCore.Mvc;
+using Results;
 
 namespace digitalwedding.Controllers.api
 {
-
     [ApiController]
-    [Route("/api/guests/")]
+    [Route("/api/guest/")]
     public class GuestController : ControllerBase
     {
         private readonly IGuestService _guestService;
@@ -22,7 +22,7 @@ namespace digitalwedding.Controllers.api
         [HttpPost()]
         public async Task<IActionResult> CreateGuest([FromBody] CreateGuestContractRequest contract)
         {
-            CreateGuestResponse response = await _guestService.CreateGuest(new CreateGuestRequest()
+            Result response = await _guestService.CreateGuest(new CreateGuestRequest()
             {
                WeddingId = contract.wedding_id,
                FirstName = contract.first_name,

@@ -14,7 +14,7 @@ namespace digitalwedding.Infrastructure.Data.Repositories
         }
         public virtual IQueryable<T> Entity => _dbContext.Set<T>();
 
-        public virtual async Task<T> GetByIdAsync(Guid id)
+        public virtual async Task<T> GetByIdAsync(string id)
         {
             return await _dbContext.Set<T>().FindAsync(id);
         }

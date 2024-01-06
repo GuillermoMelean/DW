@@ -19,6 +19,7 @@ namespace digitalwedding.Infrastructure.Data.Repositories
         protected override void OnModelCreating(ModelBuilder builder)
         {
 			builder.Entity<Wedding>().HasIndex(s => s.Id);
+			builder.Entity<Guest>().HasIndex(s => s.Id);
         }
     }
 }

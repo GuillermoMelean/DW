@@ -7,7 +7,7 @@ namespace digitalwedding.Application.Data.Interfaces
 
         IQueryable<T> GetAll();
 
-        Task<T> GetByIdAsync(Guid id);
+        Task<T> GetByIdAsync(string id);
 
         Task<T> AddAsync(T entity);
 

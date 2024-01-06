@@ -8,6 +8,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Contracts\digitalwedding.Contracts.csproj" />
+    <ProjectReference Include="..\Results\Results.csproj" />
   </ItemGroup>
   <ItemGroup>
     <None Remove="Services\" />
@@ -17,6 +18,7 @@
     <None Remove="Data\Models\Gateway\" />
     <None Remove="Data\Models\Repositories\" />
     <None Remove="Data\Models\Gateway\Guests\" />
+    <None Remove="Data\Models\Gateway\Wedding\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Services\" />
@@ -26,6 +28,7 @@
     <Folder Include="Data\Models\Gateway\" />
     <Folder Include="Data\Models\Repositories\" />
     <Folder Include="Data\Models\Gateway\Guests\" />
+    <Folder Include="Data\Models\Gateway\Wedding\" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="8.0.0" />

@@ -10,6 +10,7 @@ namespace digitalwedding.Infrastructure
 		public static void AddRepositories(this IServiceCollection services)
 		{
 			services.AddScoped<IWeddingRepository, WeddingRepository>();
+			services.AddScoped<IGuestRepository, GuestRepository>();
 		}
 
 		public static void AddDbContextDigitalWedding(this IServiceCollection services)

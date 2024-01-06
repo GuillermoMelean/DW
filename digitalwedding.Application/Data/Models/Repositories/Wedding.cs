@@ -8,7 +8,7 @@ namespace digitalwedding.Application.Data.Models.Repositories
         public DateTime weddingDate { get; set; }
         public int weddingStatusId { get; set; }
         public string firstName { get; set; }
-        public string lastName { get; set; }
+        public string secondName { get; set; }
         public string url { get; set; }
         public DateTime createdAt { get; set; }
         public DateTime updatedAt { get; set; }
