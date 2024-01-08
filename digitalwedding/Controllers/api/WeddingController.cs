@@ -1,8 +1,11 @@
 ﻿using System;
-using digitalwedding.Application.Data.Models.Gateway.Guests;
 using digitalwedding.Application.Data.Models.Gateway.Wedding;
+using digitalwedding.Application.Data.Models.Repositories;
 using digitalwedding.Application.Services;
-using digitalwedding.Contracts.GuestContracts;
+using digitalwedding.Contracts;
+using digitalwedding.Contracts.ErrorContracts;
+using digitalwedding.Contracts.WeddingContracts;
+using digitalwedding.Extensions;
 using Microsoft.AspNetCore.Mvc;
 using Results;
 
@@ -19,12 +22,35 @@ namespace digitalwedding.Controllers.api
 			_weddingService = weddingService;
 		}
 
-        [HttpGet("{wedding_id}")]
-        public async Task<IActionResult> CreateGuest(string wedding_id)
+        [HttpGet()]
+        public async Task<IActionResult> GetWeddings([FromQuery] GetAllWeddingsContractRequest contract)
         {
-            Result<GetWeddingResponse> response = await _weddingService.GetWedding(wedding_id);
+            Result<PaginatedList<Wedding>> result = await _weddingService.GetAllWeddings(contract);
 
-            return Ok(response.Value);
+            return result.ToHttpResponseWithReasonError(() => Ok(new GetAllWeddingsContractResponse()
+            {
+                list = result.Value.Select(s => new GetWeddingContractResponse()
+                {
+                    first_name = s.FirstName,
+                    second_name = s.SecondName,
+                    id = s.Id,
+                    url = s.Url,
+                    wedding_date = s.WeddingDate
+                }).ToList(),
+                page_index = result.Value.PageIndex,
+                page_size = result.Value.PageSize,
+                total_pages = result.Value.TotalPages,
+                total_records = result.Value.TotalRecords,
+            }), (errors) => StatusCode(StatusCodes.Status400BadRequest, new BadRequest400ErrorProblemDetails(errors)));
+        }
+
+        [HttpGet("{wedding_id}")]
+        public async Task<IActionResult> GetWeddingById(string wedding_id)
+        {
+            Result<GetWeddingResponse> result = await _weddingService.GetWedding(wedding_id);
+
+            return result.ToHttpResponseWithReasonError(() => Ok(result.Value),
+            (errors) => StatusCode(StatusCodes.Status400BadRequest, new BadRequest400ErrorProblemDetails(errors: errors)));
         }
     }
 }

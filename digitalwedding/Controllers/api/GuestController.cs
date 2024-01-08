@@ -1,7 +1,13 @@
 ﻿using digitalwedding.Application.Data.Models.Gateway.Guests;
+using digitalwedding.Application.Data.Models.Repositories;
 using digitalwedding.Application.Services;
+using digitalwedding.Contracts;
+using digitalwedding.Contracts.ErrorContracts;
 using digitalwedding.Contracts.GuestContracts;
+using digitalwedding.Contracts.WeddingContracts;
+using digitalwedding.Extensions;
 using Microsoft.AspNetCore.Mvc;
+using Results;
 
 namespace digitalwedding.Controllers.api
 {
@@ -14,6 +20,37 @@ namespace digitalwedding.Controllers.api
         public GuestController(IGuestService guestService)
         {
             _guestService = guestService;
+        }
+
+        [HttpGet()]
+        public async Task<IActionResult> GetGuests([FromQuery] GetAllGuestsContractRequest contract)
+        {
+            Result<PaginatedList<Guest>> result = await _guestService.GetAllGuests(contract);
+
+            return result.ToHttpResponseWithReasonError(() => Ok(new GetAllGuestsContractResponse()
+            {
+                list = result.Value.Select(s => new GetGuestContractResponse()
+                {
+                    id = s.Id,
+                    wedding_id = s.WeddingId,
+                    first_name = s.FirstName,
+                    last_name = s.LastName,
+                    email = s.Email,
+                    phoneNumber = s.PhoneNumber,
+                    attendance = s.Attendance,
+                    has_allergies = s.HasAllergies,
+                    allergies = s.Allergies,
+                    diabetic = s.Diabetic,
+                    celiac = s.Celiac,
+                    vegan = s.Vegan,
+                    vegetarian = s.Vegetarian,
+                    message = s.Message
+                }).ToList(),
+                page_index = result.Value.PageIndex,
+                page_size = result.Value.PageSize,
+                total_pages = result.Value.TotalPages,
+                total_records = result.Value.TotalRecords,
+            }), (errors) => StatusCode(StatusCodes.Status400BadRequest, new BadRequest400ErrorProblemDetails(errors)));
         }
 
         [HttpPost()]

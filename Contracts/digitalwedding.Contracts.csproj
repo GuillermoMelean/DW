@@ -8,11 +8,16 @@
 
   <ItemGroup>
     <None Remove="GuestContracts\" />
+    <None Remove="WeddingContracts\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="GuestContracts\" />
+    <Folder Include="WeddingContracts\" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Results\Results.csproj" />
   </ItemGroup>
 </Project>

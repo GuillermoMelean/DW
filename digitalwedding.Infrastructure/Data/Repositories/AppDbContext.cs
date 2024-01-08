@@ -10,9 +10,11 @@ namespace digitalwedding.Infrastructure.Data.Repositories
 
 		protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 		{
-			var connectionString = "Server=194.39.124.91;Id=cubic_guillermo;Password=Quo1049t%;Database=cubic_digital-wedding";
+			//var connectionString = "Server=194.39.124.91;Id=cubic_guillermo;Password=Quo1049t%;Database=cubic_digital-wedding";
+			var connectionString = "Server=194.39.124.91;User ID=cubic_guillermo;Password=Quo1049t%;Database=cubic_digital-wedding";
 
-			var serverVersion = new MySqlServerVersion(new Version(10, 3, 39));
+
+            var serverVersion = new MySqlServerVersion(new Version(10, 3, 39));
 			optionsBuilder.UseMySql(connectionString, serverVersion);
 		}
 

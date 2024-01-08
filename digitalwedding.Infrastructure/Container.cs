@@ -1,11 +1,10 @@
-﻿using System;
-using digitalwedding.Application.Data.Interfaces;
+﻿using digitalwedding.Application.Data.Interfaces;
 using digitalwedding.Infrastructure.Data.Repositories;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace digitalwedding.Infrastructure
 {
-	public static class Container
+    public static class Container
 	{
 		public static void AddRepositories(this IServiceCollection services)
 		{

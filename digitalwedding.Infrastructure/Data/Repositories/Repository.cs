@@ -28,8 +28,8 @@ namespace digitalwedding.Infrastructure.Data.Repositories
         {
             await _dbContext.Set<T>().AddAsync(entity);
 
-            entity.CreatedDate = DateTime.UtcNow;
-            entity.UpdatedDate = DateTime.UtcNow;
+            entity.CreatedAt = DateTime.UtcNow;
+            entity.UpdatedAt = DateTime.UtcNow;
 
             return entity;
         }
@@ -43,7 +43,7 @@ namespace digitalwedding.Infrastructure.Data.Repositories
                 _dbContext.Entry(entity).State = EntityState.Modified;
             }
 
-            entity.UpdatedDate = DateTime.UtcNow;
+            entity.UpdatedAt = DateTime.UtcNow;
 
             return entity;
         }
@@ -59,8 +59,8 @@ namespace digitalwedding.Infrastructure.Data.Repositories
 
             dbEntities.ForEach(c =>
             {
-                c.CreatedDate = DateTime.UtcNow;
-                c.UpdatedDate = DateTime.UtcNow;
+                c.CreatedAt = DateTime.UtcNow;
+                c.UpdatedAt = DateTime.UtcNow;
             });
 
             _dbContext.Set<T>().AddRange(dbEntities);

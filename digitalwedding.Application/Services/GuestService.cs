@@ -1,6 +1,13 @@
 ﻿using System;
+using System.Diagnostics.Contracts;
+using System.Linq.Expressions;
 using digitalwedding.Application.Data.Interfaces;
 using digitalwedding.Application.Data.Models.Gateway.Guests;
+using digitalwedding.Application.Data.Models.Repositories;
+using digitalwedding.Application.Errors;
+using digitalwedding.Application.Extensions;
+using digitalwedding.Contracts;
+using digitalwedding.Contracts.GuestContracts;
 using Microsoft.Extensions.Logging;
 using Results;
 
@@ -24,8 +31,54 @@ namespace digitalwedding.Application.Services
 
         public async Task<Result<CreateGuestResponse>> CreateGuest(CreateGuestRequest createGuestRequest)
         {
-            var ola = _guestRepository.GetAll();
             return Result.Ok(new CreateGuestResponse() { result = createGuestRequest.WeddingId });
+        }
+
+        public async Task<Result<PaginatedList<Guest>>> GetAllGuests(GetAllGuestsRequest getAllGuestsRequest)
+        {
+            try
+            {
+                Expression<Func<Guest, bool>> expression = whitelisteduser => true;
+
+                if (!string.IsNullOrWhiteSpace(getAllGuestsRequest.wedding_id))
+                {
+                    expression = expression.Combine(s => s.WeddingId.Equals(getAllGuestsRequest.wedding_id), Expression.Parameter(typeof(Guest), "weddingId"));
+                }
+
+                PaginatedList<Guest> result = await _guestRepository.GetGuests(expression, getAllGuestsRequest.page_index, getAllGuestsRequest.page_size);
+                return Result.Ok(result);
+
+            }
+            catch (Exception ex)
+            {
+                return Result.Fail(new DatabaseError().CausedBy(ex));
+            }
+        }
+
+        public async Task<Result<PaginatedList<Guest>>> GetAllGuests(GetAllGuestsContractRequest contract)
+        {
+            try
+            {
+                Expression<Func<Guest, bool>> expression = whitelisteduser => true;
+
+                if (!string.IsNullOrWhiteSpace(contract.wedding_id))
+                {
+                    expression = expression.Combine(s => s.WeddingId.Equals(contract.wedding_id), Expression.Parameter(typeof(Wedding), "weddingId"));
+                }
+                //if (!string.IsNullOrWhiteSpace(contract.client_id))
+                //{
+                //    expression = expression.Combine(s => s.ClientId.Equals(contract.client_id), Expression.Parameter(typeof(Wedding), "client_id"));
+                //}
+
+                PaginatedList<Guest> result = await _guestRepository.GetGuests(expression, contract.page_index, contract.page_size);
+
+                return Result.Ok(result);
+
+            }
+            catch (Exception ex)
+            {
+                return Result.Fail(new DatabaseError().CausedBy(ex));
+            }
         }
     }
 }
