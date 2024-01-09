@@ -4,7 +4,6 @@ using digitalwedding.Application.Services;
 using digitalwedding.Contracts;
 using digitalwedding.Contracts.ErrorContracts;
 using digitalwedding.Contracts.GuestContracts;
-using digitalwedding.Contracts.WeddingContracts;
 using digitalwedding.Extensions;
 using Microsoft.AspNetCore.Mvc;
 using Results;
@@ -58,25 +57,24 @@ namespace digitalwedding.Controllers.api
         {
             Result<Guest> result = await _guestService.GetGuest(guestId);
 
-            Guest guest = result.Value;
-
             return result.ToHttpResponseWithReasonError(() => Ok(new GetGuestContractResponse()
             {
-                id = guest.Id,
-                wedding_id = guest.WeddingId,
-                first_name = guest.FirstName,
-                last_name = guest.LastName,
-                email = guest.Email,
-                phone_number = guest.PhoneNumber,
-                attendance = guest.Attendance,
-                has_allergies = guest.HasAllergies,
-                allergies = guest.Allergies,
-                diabetic = guest.Diabetic,
-                celiac = guest.Celiac,
-                vegan = guest.Vegan,
-                vegetarian = guest.Vegetarian,
-                message = guest.Message
-            }), (errors) => StatusCode(StatusCodes.Status400BadRequest, new BadRequest400ErrorProblemDetails(errors)));
+                id = result.Value.Id,
+                wedding_id = result.Value.WeddingId,
+                first_name = result.Value.FirstName,
+                last_name = result.Value.LastName,
+                email = result.Value.Email,
+                phone_number = result.Value.PhoneNumber,
+                attendance = result.Value.Attendance,
+                has_allergies = result.Value.HasAllergies,
+                allergies = result.Value.Allergies,
+                diabetic = result.Value.Diabetic,
+                celiac = result.Value.Celiac,
+                vegan = result.Value.Vegan,
+                vegetarian = result.Value.Vegetarian,
+                message = result.Value.Message
+            }), (errors) =>
+            StatusCode(StatusCodes.Status400BadRequest, new BadRequest400ErrorProblemDetails(errors))) ;
         }
 
         [HttpPost()]

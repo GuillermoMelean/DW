@@ -7,6 +7,7 @@ namespace digitalwedding.Application.Errors
 
 		// Project errors 200***
 		public const string DatabaseError = "200001";
+		public const string NotFoundError = "200002";
 	}
 }
 

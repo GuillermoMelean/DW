@@ -79,7 +79,21 @@ namespace digitalwedding.Application.Services
 
         public async Task<Result<Guest>> GetGuest(string id)
         {
-            return Result.Ok(await _guestRepository.GetByIdAsync(id)); 
+            try
+            {
+                Guest result = await _guestRepository.GetByIdAsync(id);
+
+                if (result == null)
+                {
+                    return Result.Fail(new NotFoundError("Guest Not Found"));
+                }
+
+                return Result.Ok(result);
+            }
+            catch (Exception ex)
+            {
+                return Result.Fail(new DatabaseError().CausedBy(ex));
+            }
         }
     }
 }
