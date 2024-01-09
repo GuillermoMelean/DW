@@ -8,7 +8,7 @@ namespace digitalwedding.Contracts.GuestContracts
         public required string first_name { get; set; }
         public required string last_name { get; set; }
         public required string email { get; set; }
-        public string? phoneNumber { get; set; }
+        public string? phone_number { get; set; }
         public required bool attendance { get; set; }
         public required bool has_allergies { get; set; }
         public string? allergies { get; set; }

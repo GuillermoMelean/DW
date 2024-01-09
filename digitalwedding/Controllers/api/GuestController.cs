@@ -36,7 +36,7 @@ namespace digitalwedding.Controllers.api
                     first_name = s.FirstName,
                     last_name = s.LastName,
                     email = s.Email,
-                    phoneNumber = s.PhoneNumber,
+                    phone_number = s.PhoneNumber,
                     attendance = s.Attendance,
                     has_allergies = s.HasAllergies,
                     allergies = s.Allergies,
@@ -50,6 +50,32 @@ namespace digitalwedding.Controllers.api
                 page_size = result.Value.PageSize,
                 total_pages = result.Value.TotalPages,
                 total_records = result.Value.TotalRecords,
+            }), (errors) => StatusCode(StatusCodes.Status400BadRequest, new BadRequest400ErrorProblemDetails(errors)));
+        }
+
+        [HttpGet("{guestId}")]
+        public async Task<IActionResult> GetGuest(string guestId)
+        {
+            Result<Guest> result = await _guestService.GetGuest(guestId);
+
+            Guest guest = result.Value;
+
+            return result.ToHttpResponseWithReasonError(() => Ok(new GetGuestContractResponse()
+            {
+                id = guest.Id,
+                wedding_id = guest.WeddingId,
+                first_name = guest.FirstName,
+                last_name = guest.LastName,
+                email = guest.Email,
+                phone_number = guest.PhoneNumber,
+                attendance = guest.Attendance,
+                has_allergies = guest.HasAllergies,
+                allergies = guest.Allergies,
+                diabetic = guest.Diabetic,
+                celiac = guest.Celiac,
+                vegan = guest.Vegan,
+                vegetarian = guest.Vegetarian,
+                message = guest.Message
             }), (errors) => StatusCode(StatusCodes.Status400BadRequest, new BadRequest400ErrorProblemDetails(errors)));
         }
 

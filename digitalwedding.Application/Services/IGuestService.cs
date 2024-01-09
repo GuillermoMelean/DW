@@ -9,7 +9,8 @@ namespace digitalwedding.Application.Services
     public interface IGuestService
 	{
 		Task<Result<CreateGuestResponse>> CreateGuest(CreateGuestRequest createGuestRequest);
-		Task<Result<PaginatedList<Guest>>> GetAllGuests(GetAllGuestsContractRequest getAllGuestsRequest);
+		Task<Result<PaginatedList<Guest>>> GetAllGuests(GetAllGuestsContractRequest contract);
+		Task<Result<Guest>> GetGuest(string id);
     }
 }
 

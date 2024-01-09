@@ -63,12 +63,8 @@ namespace digitalwedding.Application.Services
 
                 if (!string.IsNullOrWhiteSpace(contract.wedding_id))
                 {
-                    expression = expression.Combine(s => s.WeddingId.Equals(contract.wedding_id), Expression.Parameter(typeof(Wedding), "weddingId"));
+                    expression = expression.Combine(s => s.WeddingId.Equals(contract.wedding_id), Expression.Parameter(typeof(Guest), "weddingId"));
                 }
-                //if (!string.IsNullOrWhiteSpace(contract.client_id))
-                //{
-                //    expression = expression.Combine(s => s.ClientId.Equals(contract.client_id), Expression.Parameter(typeof(Wedding), "client_id"));
-                //}
 
                 PaginatedList<Guest> result = await _guestRepository.GetGuests(expression, contract.page_index, contract.page_size);
 
@@ -79,6 +75,11 @@ namespace digitalwedding.Application.Services
             {
                 return Result.Fail(new DatabaseError().CausedBy(ex));
             }
+        }
+
+        public async Task<Result<Guest>> GetGuest(string id)
+        {
+            return Result.Ok(await _guestRepository.GetByIdAsync(id)); 
         }
     }
 }
