@@ -9,11 +9,15 @@
   background-position: 50%;
 }
 
+body {
+  font-family: 'Ovo';
+}
 
 h1, h2, h3, h4, h5, h6 {
   margin: 0;
-  color: #907959;
-  text-rendering: optimizelegibility
+  color: #38463b;
+  text-rendering: optimizelegibility;
+  font-family: 'Ovo';
 }
 
 h1 {
@@ -39,17 +43,8 @@ h5 {
 .section-title {
   float: none;
   text-align: center;
-  margin: 0 auto 30px;
   position: relative;
-  font-family: Playfair Display, serif;
-}
-
-.section-title {
-  float: none;
-  text-align: center;
-  margin: 0 auto 30px;
-  position: relative;
-  font-family: "Playfair Display", serif
+  font-family: "Ovo", serif;
 }
 
 .section-title.baseboard {
@@ -67,7 +62,7 @@ h5 {
   height: 24px;
   background-repeat: no-repeat;
   background-position-x: center;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='189' height='26' viewBox='0 0 189 26'%3E%3Cpath fill='none' fill-rule='evenodd' stroke='%23907959' stroke-width='1.5px' d='M86.19%2C2.362L96.98%2C13%2C86.19%2C23.634%2C75.4%2C13Z'/%3E%3Cpath fill='none' fill-rule='evenodd' stroke='%23907959' stroke-width='1.5px' d='M94.985%2C2.362L105.775%2C13%2C94.985%2C23.634%2C84.2%2C13Z'/%3E%3Cpath fill='none' fill-rule='evenodd' stroke='%23907959' stroke-width='1.5px' d='M103.78%2C2.362L114.57%2C13%2C103.78%2C23.634%2C92.991%2C13Z'/%3E%3Cpath fill-rule='evenodd' fill='%23907959' d='M120%2C14V13H523v1H120Z'/%3E%3Cpath fill-rule='evenodd' fill='%23907959' d='M-331%2C14V13H69v1H-331Z'/%3E%3C/svg%3E");
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='189' height='26' viewBox='0 0 189 26'%3E%3Cpath fill='none' fill-rule='evenodd' stroke='%2338463B' stroke-width='1.5px' d='M86.19%2C2.362L96.98%2C13%2C86.19%2C23.634%2C75.4%2C13Z'/%3E%3Cpath fill='none' fill-rule='evenodd' stroke='%2338463B' stroke-width='1.5px' d='M94.985%2C2.362L105.775%2C13%2C94.985%2C23.634%2C84.2%2C13Z'/%3E%3Cpath fill='none' fill-rule='evenodd' stroke='%2338463B' stroke-width='1.5px' d='M103.78%2C2.362L114.57%2C13%2C103.78%2C23.634%2C92.991%2C13Z'/%3E%3Cpath fill-rule='evenodd' fill='%2338463B' d='M120%2C14V13H523v1H120Z'/%3E%3Cpath fill-rule='evenodd' fill='%2338463B' d='M-331%2C14V13H69v1H-331Z'/%3E%3C/svg%3E");
   -webkit-transform: translateX(-50%);
   -moz-transform: translateX(-50%);
   -ms-transform: translateX(-50%);
